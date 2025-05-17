@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="text-white p-4 navbar-sticky">
+    <div class="container mx-auto flex justify-center items-center">
+      <ul class="flex space-x-8 text-lg font-semibold">
+        <li><a href="portfolio.html" class="hover:text-gray-200 transition-colors">Portofolio</a></li>
+        <li><a href="cv.html" class="hover:text-gray-200 transition-colors">CV</a></li>
+        <li><a href="blog.html" class="hover:text-gray-200 transition-colors">Blog</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Blog Section -->
+  <section id="blog" class="py-12">
+    <div class="container mx-auto px-4">
+      <div class="fade-in grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Blog Post 1 -->
+        <div class="bg-white p-6 rounded-lg shadow-md card">
+          <h4 class="text-xl font-semibold text-gray-800 mb-2">Mengenal JavaScript ES6</h4>
+          <p class="text-gray-600 mb-4">Panduan lengkap tentang fitur-fitur baru di JavaScript ES6.</p>
+          <button onclick="toggleDetail('detail-1')" class="text-blue-600 hover:underline font-medium">Baca Selengkapnya</button>
+          <div id="detail-1" class="detail-content bg-gray-50 rounded-lg mt-4">
+            <p class="text-gray-700">
+              JavaScript ES6 (ECMAScript 2015) memperkenalkan banyak fitur baru yang mempermudah pengembangan aplikasi web. 
+              Beberapa fitur utama meliputi:
+            </p>
+            <ul class="list-disc pl-6 text-gray-700">
+              <li><strong>Arrow Functions</strong>: Sintaks lebih ringkas untuk fungsi.</li>
+              <li><strong>Let dan Const</strong>: Deklarasi variabel dengan scope blok.</li>
+              <li><strong>Template Literals</strong>: String dengan interpolasi yang lebih mudah.</li>
+              <li><strong>Destructuring</strong>: Ekstraksi data dari array atau objek dengan mudah.</li>
+            </ul>
+            <p class="text-gray-700 mt-2">
+              Fitur-fitur ini membuat kode lebih bersih dan efisien, sangat cocok untuk proyek modern.
+            </p>
+          </div>
+        </div>
+        <!-- Blog Post 2 -->
+        <div class="bg-white p-6 rounded-lg shadow-md card">
+          <h4 class="text-xl font-semibold text-gray-800 mb-2">Tips Desain Web Responsif</h4>
+          <p class="text-gray-600 mb-4">Cara membuat website yang ramah untuk semua perangkat.</p>
+          <button onclick="toggleDetail('detail-2')" class="text-blue-600 hover:underline font-medium">Baca Selengkapnya</button>
+          <div id="detail-2" class="detail-content bg-gray-50 rounded-lg mt-4">
+            <p class="text-gray-700">
+              Desain web responsif adalah kunci untuk memberikan pengalaman pengguna yang optimal di berbagai perangkat. Berikut beberapa tips:
+            </p>
+            <ul class="list-disc pl-6 text-gray-700">
+              <li><strong>Gunakan Media Queries</strong>: Sesuaikan tata letak berdasarkan ukuran layar.</li>
+              <li><strong>Flexible Grids</strong>: Gunakan persentase atau unit relatif seperti vw/vh.</li>
+              <li><strong>Optimalkan Gambar</strong>: Gunakan format modern seperti WebP dan lazy loading.</li>
+              <li><strong>Test di Berbagai Perangkat</strong>: Pastikan kompatibilitas dengan alat seperti BrowserStack.</li>
+            </ul>
+            <p class="text-gray-700 mt-2">
+              Dengan pendekatan ini, website Anda akan terlihat menarik dan berfungsi dengan baik di ponsel, tablet, dan desktop.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-center p-6">
+    <p class="text-lg">© 2025 Aris Jenal.</p>
+  </footer>
+
+  <script>
+    // Fade-in animation on scroll
+    document.addEventListener('DOMContentLoaded', () => {
+      const elements = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      elements.forEach(element => observer.observe(element));
+    });
+
+    // Toggle detail content
+    function toggleDetail(id) {
+      const detail = document.getElementById(id);
+      if (detail.classList.contains('open')) {
+        detail.classList.remove('open');
+      } else {
+        // Tutup semua detail lain
+        document.querySelectorAll('.detail-content').forEach(el => {
+          el.classList.remove('open');
+        });
+        detail.classList.add('open');
+      }
+    }
+  </script>
+</body>
+</html>
